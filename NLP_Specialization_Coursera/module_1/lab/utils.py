@@ -32,9 +32,10 @@ def process_tweet(tweet):
     tweet_tokens = tokenizer.tokenize(tweet)
 
     tweets_clean = []
+    custom_punc = string.punctuation + '…' + ':)' # add the special characters to the punctuation list
     for word in tweet_tokens:
         if (word not in stopwords_english and  # remove stopwords
-                word not in string.punctuation):  # remove punctuation
+                word not in custom_punc):  # remove punctuation
             # tweets_clean.append(word)
             stem_word = stemmer.stem(word)  # stemming word
             tweets_clean.append(stem_word)
